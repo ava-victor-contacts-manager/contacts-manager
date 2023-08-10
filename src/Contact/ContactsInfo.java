@@ -14,14 +14,9 @@ public class ContactsInfo {
 
     private static ArrayList<Contacts> contactList = new ArrayList<>();
     private static Path p = Paths.get("src/Contact/contacts.txt");
+    private static Input input = new Input();
 
     public static void main(String[] args) {
-
-        Contacts bill = new Contacts("Billy Bob", "2103456784");
-        Contacts sandy = new Contacts("Sandy Cheeks", "2103456784");
-        Contacts tom = new Contacts("Tommy Tom", "2103456784");
-        Contacts jill = new Contacts("Jill Joe", "2106783456");
-
         execute();
     }
 
@@ -52,37 +47,42 @@ public class ContactsInfo {
                     Paths.get("src/Contact/contacts.txt")
             );
 
-            for(String text : lineOfTexts){
+            for (String text : lineOfTexts) {
                 System.out.println(text);
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void addNewContact() {
-        Input input = new Input();
         System.out.println("Enter a name");
         String usersName = input.getString();
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
         Contacts newContact = new Contacts(usersName, usersPhoneNumber);
         contactList.add(newContact);
-        try{
+        try {
             Set<String> existingNames = new HashSet<>(Files.readAllLines(p));
             for (Contacts contacts : contactList) {
                 if (!existingNames.contains(contacts.getName())) {
                     Files.write(p, Collections.singletonList(contacts.getName() + " " + contacts.getPhoneNumber()), StandardOpenOption.APPEND);
                     existingNames.add(contacts.getName());
-}
+                }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void searchContacts(){
-
+    public static void searchContacts() {
+        System.out.println("Who would you like to search for?");
+        String usersSearch = input.getString();
+        for(Contacts contact : contactList) {
+//            if(contact.contains(usersSearch)){
+//
+//            }
+        }
     }
 
     public static void deleteContact() {
