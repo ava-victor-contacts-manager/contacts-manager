@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Contacts {
     // instance variables
     private String name;
-    private long phoneNumber;
+    private String phoneNumber;
 
     //getters
     public String getName() {
         return name;
     }
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -19,14 +19,17 @@ public class Contacts {
     public void setName(String name) {
         this.name = name;
     }
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     // constructor
-    public Contacts(String name, long phoneNumber) {
+    public Contacts(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
 
+    public String toString() {
+        return this.name + " " + this.phoneNumber;
+    }
 }
