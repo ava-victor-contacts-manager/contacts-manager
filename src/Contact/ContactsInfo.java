@@ -72,10 +72,9 @@ public class ContactsInfo {
             Set<String> existingNames = new HashSet<>(Files.readAllLines(p));
             for (Contacts contacts : contactList) {
                 if (!existingNames.contains(contacts.getName())) {
-                    Files.write(p, Collections.singletonList(contacts.getName()), StandardOpenOption.APPEND);
+                    Files.write(p, Collections.singletonList(contacts.getName() + " " + contacts.getPhoneNumber()), StandardOpenOption.APPEND);
                     existingNames.add(contacts.getName());
-//                    existingNames.add(contacts.getPhoneNumber());
-                }
+}
             }
         } catch (IOException e){
             e.printStackTrace();
