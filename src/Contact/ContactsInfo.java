@@ -23,6 +23,11 @@ public class ContactsInfo {
     //methods
 
     public static void execute() {
+        // write a method that reads all lines from the file
+        // converts from strings to Contacts objects
+        // adds the Contacts objects to the contactList ArrayList
+
+
         while (true) {
             Input input = new Input();
             System.out.println("1. View contacts.\n2. Add a new contact. \n3. Search a contact by name. \n4. Delete an existing contact. \n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
@@ -61,15 +66,20 @@ public class ContactsInfo {
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
         Contacts newContact = new Contacts(usersName, usersPhoneNumber);
-        contactList.add(newContact);
+
         try {
             Set<String> existingNames = new HashSet<>(Files.readAllLines(p));
-            for (Contacts contacts : contactList) {
-                if (!existingNames.contains(contacts.getName())) {
-                    Files.write(p, Collections.singletonList(contacts.getName() + " " + contacts.getPhoneNumber()), StandardOpenOption.APPEND);
-                    existingNames.add(contacts.getName());
+            System.out.println(existingNames);
+//            for (Contacts contacts : contactList) {
+                System.out.println("inside contactsList loop. Checking names");
+                System.out.println("contact name: " + newContact.getName());
+                if (!existingNames.contains(newContact.getName())) {
+                    System.out.println("Contact does not exist in list. Writing contact to file");
+                    Files.write(p, Collections.singletonList(newContact.getName() + "||" + newContact.getPhoneNumber()), StandardOpenOption.APPEND);
+                    existingNames.add(newContact.getName());
+                    contactList.add(newContact);
                 }
-            }
+//            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,7 +96,8 @@ public class ContactsInfo {
     }
 
     public static void deleteContact() {
-
+        System.out.println("Which contact would you like to Delete?\n");
+        String deleteUser = input.getString();
     }
 
 }

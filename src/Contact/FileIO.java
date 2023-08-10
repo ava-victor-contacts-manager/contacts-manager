@@ -43,26 +43,26 @@ public class FileIO {
 //        System.out.println(lineOfText); =======================
 
         //PRINTS ALL IN A SINGLE LINE
-//        Path p = Paths.get("src/Contact/contacts.txt");
-//        List<String> lineOfText = new ArrayList<>();
-//        try {
-//            lineOfText = Files.readAllLines(p);
-//        } catch (IOException e){
-//            e.printStackTrace();
-//        }
-//        System.out.println(lineOfText);
-
+        Path p = Paths.get("src/Contact/contacts.txt");
+        List<String> lineOfText = new ArrayList<>();
         try {
-            List<String> lineOfTexts = Files.readAllLines(
-                    Paths.get("src/Contact/contacts.txt")
-            );
-
-            for(String text : lineOfTexts){
-                System.out.println(text);
-            }
+            lineOfText = Files.readAllLines(p);
         } catch (IOException e){
             e.printStackTrace();
         }
+        System.out.println(lineOfText);
+
+//        try {
+//            List<String> lineOfTexts = Files.readAllLines(
+//                    Paths.get("src/Contact/contacts.txt")
+//            );
+//
+//            for(String text : lineOfTexts){
+//                System.out.println(text);
+//            }
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
 
     }
 
