@@ -1,0 +1,13 @@
+
+
+//        try{
+//            Set<String> existingNames = new HashSet<>(Files.readAllLines(p));
+//            for(Contacts name: contactList){
+//                if(!existingNames.contains(name)){
+//                    Files.write(p, Collections.singletonList(name), StandardOpenOption.APPEND);
+//                    existingNames.add(String.valueOf(name));
+//                }
+//            }
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
