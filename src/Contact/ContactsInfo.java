@@ -75,6 +75,7 @@ public class ContactsInfo {
                 if (!existingNames.contains(contacts.getName())) {
                     Files.write(p, Collections.singletonList(contacts.getName()), StandardOpenOption.APPEND);
                     existingNames.add(contacts.getName());
+                    existingNames.add(contacts.getPhoneNumber());
                 }
             }
         } catch (IOException e){
