@@ -13,8 +13,8 @@ import java.util.*;
 public class ContactsInfo {
 
     private static ArrayList<Contacts> contactList = new ArrayList<>();
-    private static Path p = Paths.get("src/Contact/contacts.txt");
-    private static Input input = new Input();
+    private static final Path p = Paths.get("src/Contact/contacts.txt");
+    private static final Input input = new Input();
 
     public static void main(String[] args) {
         execute();
@@ -61,15 +61,13 @@ public class ContactsInfo {
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
         Contacts newContact = new Contacts(usersName, usersPhoneNumber);
-        contactList.add(newContact);
         try {
             Set<String> existingNames = new HashSet<>(Files.readAllLines(p));
-            for (Contacts contacts : contactList) {
-                if (!existingNames.contains(contacts.getName())) {
-                    Files.write(p, Collections.singletonList(contacts.getName() + " " + contacts.getPhoneNumber()), StandardOpenOption.APPEND);
-                    existingNames.add(contacts.getName());
+                if (!existingNames.contains(newContact.getName())) {
+                    Files.write(p, Collections.singletonList(newContact.getName() + " " + newContact.getPhoneNumber()), StandardOpenOption.APPEND);
+                    existingNames.add(newContact.getName());
+                    contactList.add(newContact);
                 }
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,9 +77,10 @@ public class ContactsInfo {
         System.out.println("Who would you like to search for?");
         String usersSearch = input.getString();
         for(Contacts contact : contactList) {
-//            if(contact.contains(usersSearch)){
-//
-//            }
+            if(contact.getName().equalsIgnoreCase(usersSearch)){
+                System.out.println(contact.getName());
+                System.out.println(contact.getName() + " " + contact.getPhoneNumber());
+            }
         }
     }
 
