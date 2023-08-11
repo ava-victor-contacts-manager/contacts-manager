@@ -1,8 +1,6 @@
 package Contact;
 
-import java.util.ArrayList;
-
-public class Contacts {
+public class Contact {
     // instance variables
     private String name;
     private String phoneNumber;
@@ -24,10 +22,12 @@ public class Contacts {
     }
 
     // constructor
-    public Contacts(String name, String phoneNumber) {
+    public Contact(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
+
+    public Contact() {}
 
     public String toString() {
         return this.name + " " + this.phoneNumber;

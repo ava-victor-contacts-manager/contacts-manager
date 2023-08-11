@@ -12,7 +12,7 @@ import java.util.*;
 public class ContactsInfo {
 
     //Global
-    private static ArrayList<Contacts> contactList =  readFromFile();
+    private static ArrayList<Contact> contactList = readFromFile();
     private static final Path path = Paths.get("src/Contact/contacts.txt");
     private static final Input input = new Input();
 
@@ -23,31 +23,26 @@ public class ContactsInfo {
     }
 
     //methods
-    public static ArrayList<Contacts> readFromFile(){
-    ArrayList<String> contacts = new ArrayList<>();
-    ArrayList<Contacts> newList = new ArrayList<>();
-    Path path = Paths.get("src/Contact/contacts.txt");
+    public static ArrayList<Contact> readFromFile() {
+        ArrayList<String> contacts = new ArrayList<>();
+        ArrayList<Contact> newList = new ArrayList<>();
+        Path path = Paths.get("src/Contact/contacts.txt");
 
         try {
             contacts = (ArrayList<String>) Files.readAllLines(path);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        for (String contact: contacts) {
+        for (String contact : contacts) {
             String[] arr = contact.split(",");
-            Contacts newGuy = new Contacts(arr[0], arr[1]);
+            Contact newGuy = new Contact(arr[0], arr[1]);
             newList.add(newGuy);
         }
         return newList;
     }
+
     public static void execute() {
-        // write a method that reads all lines from the file
-        // converts from strings to Contacts objects
-        // adds the Contacts objects to the contactList ArrayList
-
-
         while (true) {
-
             Input input = new Input();
             System.out.println("1. View contacts.\n2. Add a new contact. \n3. Search a contact by name. \n4. Delete an existing contact. \n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
             int usersInput = input.getInt();
@@ -60,55 +55,73 @@ public class ContactsInfo {
             } else if (usersInput == 4) {
                 deleteContact();
             } else {
+                writeToFile();
                 break;
             }
         }
     }
-    public static void showAllContacts() {
-        try {
-            List<String> lineOfTexts = Files.readAllLines(
-                    Paths.get("src/Contact/contacts.txt")
-            );
 
-            for (String text : lineOfTexts) {
-                System.out.println(text);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void showAllContacts() {
+        System.out.println(contactList.toString());
     }
+
     public static void addNewContact() {
         System.out.println("Enter a name");
         String usersName = input.getString();
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
-        Contacts newContact = new Contacts(usersName, usersPhoneNumber);
-
-        try {
-            Set<String> existingNames = new HashSet<>(Files.readAllLines(path));
-                if (!existingNames.contains(newContact.getName())) {
-                    Files.write(path, Collections.singletonList(newContact.getName() + "," + newContact.getPhoneNumber()), StandardOpenOption.APPEND);
-                    existingNames.add(newContact.getName());
-                    contactList.add(newContact);
-                }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        Contact tempContact = new Contact();
+        Contact newContact = new Contact(usersName, usersPhoneNumber);
+        for (Contact contact : contactList) {
+            if (!newContact.equals(contact)) {
+                tempContact = newContact;
+            }
         }
+        contactList.add(tempContact);
     }
+
     public static String searchContacts() {
         System.out.println("Who would you like to search for?");
         String usersSearch = input.getString();
-        for(Contacts contact : contactList) {
-            if(contact.getName().contains(usersSearch)){
+        for (Contact contact : contactList) {
+            if (contact.getName().toLowerCase().contains(usersSearch)) {
                 return contact.toString();
             }
         }
         return "user not found";
     }
+
     public static void deleteContact() {
         System.out.println("Which contact would you like to Delete?\n");
         String deleteUser = input.getString();
+        int index = contactList.size() + 2;
+        for (Contact contact : contactList) {
+            if (contact.getName().toLowerCase().contains(deleteUser.toLowerCase())) {
+                index = contactList.indexOf(contact);
+                System.out.println("Index is: " + index);
+            }
+        }
+        try {
+            contactList.remove(index);
+        } catch (Exception e) {
+            //do nothing
+        }
+        System.out.println("Size is " + contactList.size());
+        for (Contact temp : contactList) {
+            System.out.println(temp.getName());
+        }
     }
 
+    public static void writeToFile() {
+        try {
+            List<String> lines = new ArrayList<>();
+            for (Contact contact : contactList) {
+                lines.add(contact.getName() + "," + contact.getPhoneNumber());
+            }
+            Files.write(path, lines);
+        } catch (IOException e) {
+            System.out.println("Error Writing contact to files");
+        }
+    }
 }
+
