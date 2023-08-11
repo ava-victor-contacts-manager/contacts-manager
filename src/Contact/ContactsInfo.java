@@ -18,7 +18,6 @@ public class ContactsInfo {
 
     //main methods
     public static void main(String[] args) {
-        title();
         execute();
     }
 
@@ -42,6 +41,9 @@ public class ContactsInfo {
     }
     public static void execute() {
         int choice;
+
+        title();
+
         while (true) {
             choice = showMenu();
             if (choice == 1) {
@@ -86,42 +88,48 @@ public class ContactsInfo {
             }
         }
     }
-
     public static void title() {
-        System.out.println(" ________  ________  ________   _________  ________  ________ _________        _____ ______   ________  ________   ________  ________  _______   ________     \n" +
-                "|\\   ____\\|\\   __  \\|\\   ___  \\|\\___   ___\\\\   __  \\|\\   ____\\\\___   ___\\     |\\   _ \\  _   \\|\\   __  \\|\\   ___  \\|\\   __  \\|\\   ____\\|\\  ___ \\ |\\   __  \\    \n" +
-                "\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\ \\  \\|___ \\  \\_\\ \\  \\|\\  \\ \\  \\___\\|___ \\  \\_|     \\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|\\ \\  \\|\\  \\   \n" +
-                " \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\   __  \\ \\  \\       \\ \\  \\       \\ \\  \\\\|__| \\  \\ \\   __  \\ \\  \\\\ \\  \\ \\   __  \\ \\  \\  __\\ \\  \\_|/_\\ \\   _  _\\  \n" +
-                "  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\  \\ \\  \\ \\  \\____   \\ \\  \\       \\ \\  \\    \\ \\  \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\ \\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\  \\| \n" +
-                "   \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\ \\ \\__\\ \\__\\ \\_______\\  \\ \\__\\       \\ \\__\\    \\ \\__\\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ \n" +
-                "    \\|_______|\\|_______|\\|__| \\|__|    \\|__|  \\|__|\\|__|\\|_______|   \\|__|        \\|__|     \\|__|\\|__|\\|__|\\|__| \\|__|\\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\n" +
-                "                                                                                                                                                              \n" +
-                "                                                                                                                                                              \n" +
-                "    __  ___          __        __               ___                                 __   _    ___      __            \n" +
-                "   /  |/  /___ _____/ /__     / /_  __  ___    /   |_   ______ _   ____ _____  ____/ /  | |  / (_)____/ /_____  _____\n" +
-                "  / /|_/ / __ `/ __  / _ \\   / __ \\/ / / (_)  / /| | | / / __ `/  / __ `/ __ \\/ __  /   | | / / / ___/ __/ __ \\/ ___/\n" +
-                " / /  / / /_/ / /_/ /  __/  / /_/ / /_/ /    / ___ | |/ / /_/ /  / /_/ / / / / /_/ /    | |/ / / /__/ /_/ /_/ / /    \n" +
-                "/_/  /_/\\__,_/\\__,_/\\___/  /_.___/\\__, (_)  /_/  |_|___/\\__,_/   \\__,_/_/ /_/\\__,_/     |___/_/\\___/\\__/\\____/_/     \n" +
-                "                                 /____/                                                                              ");
-    }
+        String blue = "\u001B[94m";
+        String resetColo = "\u001B[0m";
 
+        String art = """
+                 ________  ________  ________   _________  ________  ________ _________        _____ ______   ________  ________   ________  ________  _______   ________    \s
+                |\\   ____\\|\\   __  \\|\\   ___  \\|\\___   ___\\\\   __  \\|\\   ____\\\\___   ___\\     |\\   _ \\  _   \\|\\   __  \\|\\   ___  \\|\\   __  \\|\\   ____\\|\\  ___ \\ |\\   __  \\   \s
+                \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\ \\  \\|___ \\  \\_\\ \\  \\|\\  \\ \\  \\___\\|___ \\  \\_|     \\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|\\ \\  \\|\\  \\  \s
+                 \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\   __  \\ \\  \\       \\ \\  \\       \\ \\  \\\\|__| \\  \\ \\   __  \\ \\  \\\\ \\  \\ \\   __  \\ \\  \\  __\\ \\  \\_|/_\\ \\   _  _\\ \s
+                  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\  \\ \\  \\ \\  \\____   \\ \\  \\       \\ \\  \\    \\ \\  \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\ \\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\  \\|\s
+                   \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\ \\ \\__\\ \\__\\ \\_______\\  \\ \\__\\       \\ \\__\\    \\ \\__\\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\\s
+                    \\|_______|\\|_______|\\|__| \\|__|    \\|__|  \\|__|\\|__|\\|_______|   \\|__|        \\|__|     \\|__|\\|__|\\|__|\\|__| \\|__|\\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|
+                                                                                                                                                                             \s
+                                                                                                                                                                             \s
+                """;
+        System.out.println(blue + art + resetColo);
+
+    }
     public static int showMenu() {
         Input input = new Input();
-        System.out.println("╔═.✵.═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗ \n1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════.✵.═╝");
+        System.out.println("╔═.✵.═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n" +
+                "                                                                             1. \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8. \n\n                                                                          2.  \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCB6 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9. \n\n                                                                     3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n\n                                                                    4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n\n                                                                                5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n\n                                                                     ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════.✵.═╝");
         int usersInput = input.getInt();
         return usersInput;
     }
-
-
-
     public static void showAllContacts() {
         System.out.println(contactList);
     }
-
     public static void addNewContact() {
-        System.out.println("Enter a name");
+
+        System.out.println("""
+                                                                                \s
+                 _____   _   _ _                   _____         _           _  \s
+                |  _  |_| |_| |_|___ ___    ___   |     |___ ___| |_ ___ ___| |_\s
+                |     | . | . | |   | . |  | .'|  |   --| . |   |  _| .'|  _|  _|
+                |__|__|___|___|_|_|_|_  |  |__,|  |_____|___|_|_|_| |__,|___|_| \s
+                                    |___|                                       \s
+                """);
+
+        System.out.println("\nℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCBB\uD835\uDCBE\uD835\uDCC7\uD835\uDCC8\uD835\uDCC9 \uD835\uDCB6\uD835\uDCC3\uD835\uDCB9 \uD835\uDCC1\uD835\uDCB6\uD835\uDCC8\uD835\uDCC9 \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ:");
         String usersName = input.getString();
-        System.out.println("Enter a phone number");
+        System.out.println("\nℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCAB\uD835\uDCBDℴ\uD835\uDCC3ℯ\uD835\uDCC3\uD835\uDCCA\uD835\uDCC2\uD835\uDCB7ℯ\uD835\uDCC7:");
         String usersPhoneNumber = input.getString();
         String formattedPhoneNumber = usersPhoneNumber.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
         Contact tempContact = new Contact();
@@ -133,8 +141,15 @@ public class ContactsInfo {
             }
         }
         contactList.add(tempContact);
+        System.out.println("""
+                                                                      __\s
+                 _____         _           _            _   _       _|  |
+                |     |___ ___| |_ ___ ___| |_    ___ _| |_| |___ _| |  |
+                |   --| . |   |  _| .'|  _|  _|  | .'| . | . | -_| . |__|
+                |_____|___|_|_|_| |__,|___|_|    |__,|___|___|___|___|__|
+                                                                        \s
+                """);
     }
-
     public static void searchContacts() {
         System.out.println("Who would you like to search for?");
         String usersSearch = input.getString();
@@ -149,7 +164,6 @@ public class ContactsInfo {
             System.out.println("Couldn't find anyone by that name");
         }
     }
-
     public static void deleteContact() {
         System.out.println("Which contact would you like to Delete?\n");
         String deleteUser = input.getString();
@@ -170,7 +184,6 @@ public class ContactsInfo {
             System.out.println(temp.getName());
         }
     }
-
     public static void writeToFile() {
         try {
             List<String> lines = new ArrayList<>();
