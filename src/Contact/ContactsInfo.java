@@ -15,7 +15,6 @@ public class ContactsInfo {
     private static final Path path = Paths.get("src/Contact/contacts.txt");
     private static final Input input = new Input();
 
-
     //main methods
     public static void main(String[] args) {
         execute();
@@ -43,9 +42,12 @@ public class ContactsInfo {
 
         Scanner sc = new Scanner(System.in);
 
+        //╔═.✵.══════════╗
+        //╚══════════.✵.═╝
+
         while (true) {
             Input input = new Input();
-            System.out.println("1. View contacts.\n2. Add a new contact. \n3. Search a contact by name. \n4. Delete an existing contact. \n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
+            System.out.println("╔═.✵.════════════════════════════════╗ \n  1. View contacts.\n  2. Add a new contact. \n  3. Search a contact by name. \n  4. Delete an existing contact. \n  5. Exit.\n  Enter an option (1, 2, 3, 4 or 5)\n╚════════════════════════════════.✵.═╝");
             int usersInput = input.getInt();
             if (usersInput == 1) {
                 showAllContacts();
@@ -95,16 +97,24 @@ public class ContactsInfo {
     public static void addNewContact() {
         System.out.println("Enter a name");
         String usersName = input.getString();
+
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
 
         String formattedPhoneNumber = usersPhoneNumber.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
+
         Contact tempContact = new Contact();
         Contact newContact = new Contact(usersName, formattedPhoneNumber);
 
+
+
         for (Contact contact : contactList) {
             if (!newContact.equals(contact)) {
-                tempContact = newContact;
+                if (usersPhoneNumber.length() < 10) {
+                    tempContact = newContact;
+                } else {
+                    System.out.println("Enter a phone number");
+                }
             }
         }
         contactList.add(tempContact);
@@ -150,5 +160,6 @@ public class ContactsInfo {
             System.out.println("Error Writing contact to files");
         }
     }
+
 }
 
