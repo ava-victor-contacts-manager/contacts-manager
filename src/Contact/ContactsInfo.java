@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public class ContactsInfo {
@@ -40,38 +39,69 @@ public class ContactsInfo {
         }
         return newList;
     }
-
     public static void execute() {
+
+        Scanner sc = new Scanner(System.in);
+
         while (true) {
             Input input = new Input();
             System.out.println("1. View contacts.\n2. Add a new contact. \n3. Search a contact by name. \n4. Delete an existing contact. \n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
             int usersInput = input.getInt();
             if (usersInput == 1) {
                 showAllContacts();
+                System.out.print("Do you want to continue? [y/n]: ");
+                String userContinue = sc.next();
+                if (userContinue.equalsIgnoreCase("y")) {
+                } else {
+                    writeToFile();
+                    break;
+                }
             } else if (usersInput == 2) {
                 addNewContact();
+                System.out.print("Do you want to continue? [y/n]: ");
+                String userContinue = sc.next();
+                if (userContinue.equalsIgnoreCase("y")) {
+                } else {
+                    writeToFile();
+                    break;
+                }
             } else if (usersInput == 3) {
-                System.out.println(searchContacts());
+                searchContacts();
+                System.out.print("Do you want to continue? [y/n]: ");
+                String userContinue = sc.next();
+                if (userContinue.equalsIgnoreCase("y")) {
+                } else {
+                    writeToFile();
+                    break;
+                }
             } else if (usersInput == 4) {
                 deleteContact();
+                System.out.print("Do you want to continue? [y/n]: ");
+                String userContinue = sc.next();
+                if (userContinue.equalsIgnoreCase("y")) {
+                } else {
+                    writeToFile();
+                    break;
+                }
             } else {
                 writeToFile();
                 break;
             }
         }
     }
-
     public static void showAllContacts() {
         System.out.println(contactList.toString());
     }
-
     public static void addNewContact() {
         System.out.println("Enter a name");
         String usersName = input.getString();
         System.out.println("Enter a phone number");
         String usersPhoneNumber = input.getString();
+
+        String formattedPhoneNumber = usersPhoneNumber.replaceAll("(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
         Contact tempContact = new Contact();
-        Contact newContact = new Contact(usersName, usersPhoneNumber);
+        Contact newContact = new Contact(usersName, formattedPhoneNumber);
+
         for (Contact contact : contactList) {
             if (!newContact.equals(contact)) {
                 tempContact = newContact;
@@ -79,7 +109,6 @@ public class ContactsInfo {
         }
         contactList.add(tempContact);
     }
-
     public static String searchContacts() {
         System.out.println("Who would you like to search for?");
         String usersSearch = input.getString();
@@ -90,7 +119,6 @@ public class ContactsInfo {
         }
         return "user not found";
     }
-
     public static void deleteContact() {
         System.out.println("Which contact would you like to Delete?\n");
         String deleteUser = input.getString();
@@ -111,7 +139,6 @@ public class ContactsInfo {
             System.out.println(temp.getName());
         }
     }
-
     public static void writeToFile() {
         try {
             List<String> lines = new ArrayList<>();
