@@ -18,6 +18,7 @@ public class ContactsInfo {
 
     //main methods
     public static void main(String[] args) {
+        title();
         execute();
     }
 
@@ -45,7 +46,7 @@ public class ContactsInfo {
             choice = showMenu();
             if (choice == 1) {
                 showAllContacts();
-                System.out.print("╔════════════════════════════════╗\n \uD835\uDC6B\uD835\uDC90 \uD835\uDC9A\uD835\uDC90\uD835\uDC96 \uD835\uDC98\uD835\uDC82\uD835\uDC8F\uD835\uDC95 \uD835\uDC95\uD835\uDC90 \uD835\uDC84\uD835\uDC90\uD835\uDC8F\uD835\uDC95\uD835\uDC8A\uD835\uDC8F\uD835\uDC96\uD835\uDC86? [\uD835\uDC9A/\uD835\uDC8F]\n╚════════════════════════════════╝\n");
+                System.out.print("╔═════════════════════════════╗\n \uD835\uDC6B\uD835\uDC90 \uD835\uDC9A\uD835\uDC90\uD835\uDC96 \uD835\uDC98\uD835\uDC82\uD835\uDC8F\uD835\uDC95 \uD835\uDC95\uD835\uDC90 \uD835\uDC84\uD835\uDC90\uD835\uDC8F\uD835\uDC95\uD835\uDC8A\uD835\uDC8F\uD835\uDC96\uD835\uDC86? [\uD835\uDC9A/\uD835\uDC8F]\n╚═════════════════════════════╝\n");
                 String userContinue = input.getString();
                 if (userContinue.equalsIgnoreCase("y")) {
                 } else {
@@ -86,12 +87,32 @@ public class ContactsInfo {
         }
     }
 
+    public static void title() {
+        System.out.println(" ________  ________  ________   _________  ________  ________ _________        _____ ______   ________  ________   ________  ________  _______   ________     \n" +
+                "|\\   ____\\|\\   __  \\|\\   ___  \\|\\___   ___\\\\   __  \\|\\   ____\\\\___   ___\\     |\\   _ \\  _   \\|\\   __  \\|\\   ___  \\|\\   __  \\|\\   ____\\|\\  ___ \\ |\\   __  \\    \n" +
+                "\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\ \\  \\|___ \\  \\_\\ \\  \\|\\  \\ \\  \\___\\|___ \\  \\_|     \\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\ \\  \\___|\\ \\   __/|\\ \\  \\|\\  \\   \n" +
+                " \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\   __  \\ \\  \\       \\ \\  \\       \\ \\  \\\\|__| \\  \\ \\   __  \\ \\  \\\\ \\  \\ \\   __  \\ \\  \\  __\\ \\  \\_|/_\\ \\   _  _\\  \n" +
+                "  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \\ \\  \\ \\  \\ \\  \\____   \\ \\  \\       \\ \\  \\    \\ \\  \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\ \\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\  \\| \n" +
+                "   \\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\ \\ \\__\\ \\__\\ \\_______\\  \\ \\__\\       \\ \\__\\    \\ \\__\\ \\__\\ \\__\\ \\__\\\\ \\__\\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\__\\\\ _\\ \n" +
+                "    \\|_______|\\|_______|\\|__| \\|__|    \\|__|  \\|__|\\|__|\\|_______|   \\|__|        \\|__|     \\|__|\\|__|\\|__|\\|__| \\|__|\\|__|\\|__|\\|_______|\\|_______|\\|__|\\|__|\n" +
+                "                                                                                                                                                              \n" +
+                "                                                                                                                                                              \n" +
+                "    __  ___          __        __               ___                                 __   _    ___      __            \n" +
+                "   /  |/  /___ _____/ /__     / /_  __  ___    /   |_   ______ _   ____ _____  ____/ /  | |  / (_)____/ /_____  _____\n" +
+                "  / /|_/ / __ `/ __  / _ \\   / __ \\/ / / (_)  / /| | | / / __ `/  / __ `/ __ \\/ __  /   | | / / / ___/ __/ __ \\/ ___/\n" +
+                " / /  / / /_/ / /_/ /  __/  / /_/ / /_/ /    / ___ | |/ / /_/ /  / /_/ / / / / /_/ /    | |/ / / /__/ /_/ /_/ / /    \n" +
+                "/_/  /_/\\__,_/\\__,_/\\___/  /_.___/\\__, (_)  /_/  |_|___/\\__,_/   \\__,_/_/ /_/\\__,_/     |___/_/\\___/\\__/\\____/_/     \n" +
+                "                                 /____/                                                                              ");
+    }
+
     public static int showMenu() {
         Input input = new Input();
-        System.out.println("╔═.✵.═══════════════════════════════════╗\n   1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════.✵.═╝");
+        System.out.println("╔═.✵.═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗ \n1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════.✵.═╝");
         int usersInput = input.getInt();
         return usersInput;
     }
+
+
 
     public static void showAllContacts() {
         System.out.println(contactList);
