@@ -13,7 +13,7 @@ public class Input {
 
     // Instance Methods ========================
     public String getString() {
-        return this.scanner.nextLine();
+        return scanner.nextLine();
     }
     public String getString(String prompt) {
         System.out.println(prompt);
