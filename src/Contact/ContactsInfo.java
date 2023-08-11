@@ -11,7 +11,7 @@ import java.util.*;
 public class ContactsInfo {
 
     //Global
-    private static ArrayList<Contact> contactList = readFromFile();
+    private static final ArrayList<Contact> contactList = readFromFile();
     private static final Path path = Paths.get("src/Contact/contacts.txt");
     private static final Input input = new Input();
 
@@ -42,11 +42,11 @@ public class ContactsInfo {
     public static void execute() {
         while (true) {
             Input input = new Input();
-            System.out.println("1. View contacts.\n2. Add a new contact. \n3. Search a contact by name. \n4. Delete an existing contact. \n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
+            System.out.println("╔═.✵.═══════════════════════════════════╗\n   1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════.✵.═╝");
             int usersInput = input.getInt();
             if (usersInput == 1) {
                 showAllContacts();
-                System.out.print("Do you want to continue? [y/n]: ");
+                System.out.print("╔════════════════════════════════╗\n \uD835\uDC6B\uD835\uDC90 \uD835\uDC9A\uD835\uDC90\uD835\uDC96 \uD835\uDC98\uD835\uDC82\uD835\uDC8F\uD835\uDC95 \uD835\uDC95\uD835\uDC90 \uD835\uDC84\uD835\uDC90\uD835\uDC8F\uD835\uDC95\uD835\uDC8A\uD835\uDC8F\uD835\uDC96\uD835\uDC86? [\uD835\uDC9A/\uD835\uDC8F]\n╚════════════════════════════════╝\n");
                 String userContinue = input.getString();
                 if (userContinue.equalsIgnoreCase("y")) {
                 } else {
@@ -87,9 +87,11 @@ public class ContactsInfo {
             }
         }
     }
+
     public static void showAllContacts() {
         System.out.println(contactList.toString());
     }
+
     public static void addNewContact() {
         System.out.println("Enter a name");
         String usersName = input.getString();
@@ -106,6 +108,7 @@ public class ContactsInfo {
         }
         contactList.add(tempContact);
     }
+
     public static void searchContacts() {
         System.out.println("Who would you like to search for?");
         String usersSearch = input.getString();
@@ -120,6 +123,7 @@ public class ContactsInfo {
             System.out.println("Couldn't find anyone by that name");
         }
     }
+
     public static void deleteContact() {
         System.out.println("Which contact would you like to Delete?\n");
         String deleteUser = input.getString();
@@ -140,6 +144,7 @@ public class ContactsInfo {
             System.out.println(temp.getName());
         }
     }
+
     public static void writeToFile() {
         try {
             List<String> lines = new ArrayList<>();
