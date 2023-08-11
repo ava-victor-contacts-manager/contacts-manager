@@ -40,11 +40,10 @@ public class ContactsInfo {
         return newList;
     }
     public static void execute() {
+        int choice;
         while (true) {
-            Input input = new Input();
-            System.out.println("╔═.✵.═══════════════════════════════════╗\n   1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════.✵.═╝");
-            int usersInput = input.getInt();
-            if (usersInput == 1) {
+            choice = showMenu();
+            if (choice == 1) {
                 showAllContacts();
                 System.out.print("╔════════════════════════════════╗\n \uD835\uDC6B\uD835\uDC90 \uD835\uDC9A\uD835\uDC90\uD835\uDC96 \uD835\uDC98\uD835\uDC82\uD835\uDC8F\uD835\uDC95 \uD835\uDC95\uD835\uDC90 \uD835\uDC84\uD835\uDC90\uD835\uDC8F\uD835\uDC95\uD835\uDC8A\uD835\uDC8F\uD835\uDC96\uD835\uDC86? [\uD835\uDC9A/\uD835\uDC8F]\n╚════════════════════════════════╝\n");
                 String userContinue = input.getString();
@@ -53,7 +52,7 @@ public class ContactsInfo {
                     writeToFile();
                     break;
                 }
-            } else if (usersInput == 2) {
+            } else if (choice == 2) {
                 addNewContact();
                 System.out.print("Do you want to continue? [y/n]: ");
                 String userContinue = input.getString();
@@ -62,7 +61,7 @@ public class ContactsInfo {
                     writeToFile();
                     break;
                 }
-            } else if (usersInput == 3) {
+            } else if (choice == 3) {
                 searchContacts();
                 System.out.print("Do you want to continue? [y/n]: ");
                 String userContinue = input.getString();
@@ -71,12 +70,11 @@ public class ContactsInfo {
                     writeToFile();
                     break;
                 }
-            } else if (usersInput == 4) {
+            } else if (choice == 4) {
                 deleteContact();
                 System.out.print("Do you want to continue? [y/n]: ");
                 String userContinue = input.getString();
                 if (userContinue.equalsIgnoreCase("y")) {
-
                 } else {
                     writeToFile();
                     break;
@@ -88,8 +86,15 @@ public class ContactsInfo {
         }
     }
 
+    public static int showMenu() {
+        Input input = new Input();
+        System.out.println("╔═.✵.═══════════════════════════════════╗\n   1. \uD83D\uDCDE \uD835\uDCB1\uD835\uDCBEℯ\uD835\uDCCC \uD835\uDC9Eℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDCDE. \n   2. \uD83D\uDC64 \uD835\uDC9C\uD835\uDCB9\uD835\uDCB9 \uD835\uDCC3ℯ\uD835\uDCCC \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9\uD835\uDCC8, \uD83D\uDC64.\n   3. \uD83D\uDD0E \uD835\uDCAEℯ\uD835\uDCB6\uD835\uDCC7\uD835\uDCB8\uD835\uDCBD \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9 \uD835\uDCB7\uD835\uDCCE \uD835\uDCC3\uD835\uDCB6\uD835\uDCC2ℯ, \uD83D\uDD0E. \n   4. \uD83D\uDDD1 \uD835\uDC9Fℯ\uD835\uDCC1ℯ\uD835\uDCC9ℯ \uD835\uDCB6\uD835\uDCC3 ℯ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC8\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54 \uD835\uDCB8ℴ\uD835\uDCC3\uD835\uDCC9\uD835\uDCB6\uD835\uDCB8\uD835\uDCC9, \uD83D\uDDD1. \n   5. ℰ\uD835\uDCCD\uD835\uDCBE\uD835\uDCC9, .\n   ℰ\uD835\uDCC3\uD835\uDCC9ℯ\uD835\uDCC7 \uD835\uDCB6\uD835\uDCC3 ℴ\uD835\uDCC5\uD835\uDCC9\uD835\uDCBEℴ\uD835\uDCC3 (1, 2, 3, 4 ℴ\uD835\uDCC7 5) \n╚═══════════════════════════════════.✵.═╝");
+        int usersInput = input.getInt();
+        return usersInput;
+    }
+
     public static void showAllContacts() {
-        System.out.println(contactList.toString());
+        System.out.println(contactList);
     }
 
     public static void addNewContact() {
