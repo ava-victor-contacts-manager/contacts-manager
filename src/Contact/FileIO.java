@@ -9,16 +9,16 @@ public class FileIO {
 
     public static void main(String[] args) {
 
-        Path filePath = Paths.get("src/contact/ContactsInfo.java");
-        System.out.println(Files.exists(filePath));
-
-        String packageName = "Contact";
-        String fileName = "contacts.txt";
-
-        //This allows us to get the package inside the Directory
-        Path dataDirectory = Paths.get("src", packageName);
-        Path dataFile = dataDirectory.resolve(fileName);
-        System.out.println(dataFile);
+//        Path filePath = Paths.get("src/contact/ContactsInfo.java");
+//        System.out.println(Files.exists(filePath));
+//
+//        String packageName = "Contact";
+//        String fileName = "contacts.txt";
+//
+//        //This allows us to get the package inside the Directory
+//        Path dataDirectory = Paths.get("src", packageName);
+//        Path dataFile = dataDirectory.resolve(fileName);
+//        System.out.println(dataFile);
 
 //        if (!Files.exists(dataFile)) {
 //            try {
