@@ -24,34 +24,34 @@ public class ContactsInfo {
 
     //methods
 
-    public static void idea(){
-
-        String yellow = "\u001B[33m";
-        String resetColo = "\u001B[0m";
-        String art = """
-                                                                                                                                     \s
-                                                                                    _____         _           _      __    _     _  \s
-                                                                                   |     |___ ___| |_ ___ ___| |_   |  |  |_|___| |_\s
-                                                                                   |   --| . |   |  _| .'|  _|  _|  |  |__| |_ -|  _|
-                                                                                   |_____|___|_|_|_| |__,|___|_|    |_____|_|___|_| \s
-                                                                                                                                        \s
-                    """;
-
-
-        try {
-            List<String> lineOfTexts = Files.readAllLines(
-                    Paths.get("src/Contact/contacts.txt")
-            );
-            System.out.println(yellow + art + resetColo);
-            System.out.println("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-            for(String text : lineOfTexts){
-                System.out.println("                                                                         " +text);
-            }
-            System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝ \n\n");
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+//    public static void idea(){
+//
+//        String yellow = "\u001B[33m";
+//        String resetColo = "\u001B[0m";
+//        String art = """
+//                                                                                                                                     \s
+//                                                                                    _____         _           _      __    _     _  \s
+//                                                                                   |     |___ ___| |_ ___ ___| |_   |  |  |_|___| |_\s
+//                                                                                   |   --| . |   |  _| .'|  _|  _|  |  |__| |_ -|  _|
+//                                                                                   |_____|___|_|_|_| |__,|___|_|    |_____|_|___|_| \s
+//                                                                                                                                        \s
+//                    """;
+//
+//
+//        try {
+//            List<String> lineOfTexts = Files.readAllLines(
+//                    Paths.get("src/Contact/contacts.txt")
+//            );
+//            System.out.println(yellow + art + resetColo);
+//            System.out.println("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+//            for(String text : lineOfTexts){
+//                System.out.println("                                                                         " +text);
+//            }
+//            System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝ \n\n");
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
+//    }
     public static ArrayList<Contact> readFromFile() {
 
         ArrayList<String> contacts = new ArrayList<>();
@@ -79,7 +79,7 @@ public class ContactsInfo {
             choice = showMenu();
 
             if (choice == 1) {
-                idea();
+                showAllContacts();
                 System.out.print("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n                                                                      \uD835\uDC6B\uD835\uDC90 \uD835\uDC9A\uD835\uDC90\uD835\uDC96 \uD835\uDC98\uD835\uDC82\uD835\uDC8F\uD835\uDC95 \uD835\uDC95\uD835\uDC90 \uD835\uDC84\uD835\uDC90\uD835\uDC8F\uD835\uDC95\uD835\uDC8A\uD835\uDC8F\uD835\uDC96\uD835\uDC86? [\uD835\uDC9A/\uD835\uDC8F]\n╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
                 String userContinue = input.getString();
                 if (userContinue.equalsIgnoreCase("y")) {
@@ -158,7 +158,6 @@ public class ContactsInfo {
     public static void showAllContacts() {
         System.out.println(contactList);
     }
-
     public static void addNewContact() {
         String yellow = "\u001B[33m";
         String resetColo = "\u001B[0m";
@@ -191,6 +190,7 @@ public class ContactsInfo {
                 tempContact = newContact;
             }
         }
+//        contactList.add(idea);
         contactList.add(tempContact);
         System.out.println("""
                                                                                                                                    __\s
@@ -222,7 +222,7 @@ public class ContactsInfo {
         for (Contact contact : contactList) {
             if (contact.getName().toLowerCase().contains(deleteUser.toLowerCase())) {
                 index = contactList.indexOf(contact);
-                System.out.println("Index is: " + index);
+//                System.out.println("Index is: " + index);
             }
         }
         try {
@@ -230,7 +230,7 @@ public class ContactsInfo {
         } catch (Exception e) {
             //do nothing
         }
-        System.out.println("Size is " + contactList.size());
+        System.out.println("╔═.✵.═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗ \n                                                           Deleted, your contact list is: \n ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════.✵.═╝");
         for (Contact temp : contactList) {
             System.out.println(temp.getName());
         }
