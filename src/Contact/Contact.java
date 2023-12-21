@@ -12,7 +12,6 @@ public class Contact {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     //setters
     public void setName(String name) {
         this.name = name;
